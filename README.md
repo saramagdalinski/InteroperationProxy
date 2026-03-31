@@ -22,12 +22,7 @@ This proves that compound sessions can be successfully established across native
 
 The system enforces strict topological decoupling through three distinct Python components:
 
-```mermaid
-graph LR
-    Client((HTTP Client)) <== HTTP over\nTCP :8000 ==> Proxy[Interoperation Proxy]
-    Proxy[Interoperation Proxy] <== NDN Interests\nover Unix Socket ==> Router((NDN Router))
-    Router((NDN Router)) <== NDN Interests & Data\nover Unix Socket ==> Server[NDN Producer]
-```
+![System Architecture](HTTPtoNDN.png)
 
 ### 1. The NDN Forwarding Router (`src/router.py`)
 This script acts as the core routing fabric of the simulated NDN network. 
