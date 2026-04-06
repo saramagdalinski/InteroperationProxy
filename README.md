@@ -87,3 +87,11 @@ Alternatively, you can run the automated integration test suite which tests the 
 ```bash
 python3 src/test_system.py
 ```
+
+A benchmark script was used to evaluate system performance under concurrent load. It generates multiple HTTP requests to the proxy and measures throughput, latency, and error rate across varying concurrency levels.
+
+To run the benchmark:
+```bash
+python3 src/benchmark.py
+```
+Results and analysis are provided in the project report.
