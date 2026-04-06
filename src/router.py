@@ -42,12 +42,13 @@ def handle_connection(conn):
                 
                 # 2. Look up the name in the FIB
                 target_conn = None
+                longest_prefix_length = -1
                 with fib_lock:
                     # Basic longest prefix match simulation
                     for prefix, server_conn in FIB.items():
-                        if name.startswith(prefix):
+                        if name.startswith(prefix) and len(prefix) > longest_prefix_length:
+                            longest_prefix_length = len(prefix)
                             target_conn = server_conn
-                            break
                 
                 # 3. Forward the interest, or return error if no route
                 if target_conn:
